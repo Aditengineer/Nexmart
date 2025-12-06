@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: my-react-app
+    env: node
+    buildCommand: npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: PORT
+        value: 10000  # Render sets this automatically
