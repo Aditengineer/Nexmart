@@ -1,0 +1,23 @@
+.auth-page {
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: var(--spacing-lg);
+  }
+}
