@@ -75,9 +75,9 @@ For a free GitHub Pages deployment:
 
 ```javascript
 export default {
-  base: '/indestrial-tra/',  // Add this line
+  base: "/indestrial-tra/", // Add this line
   plugins: [react()],
-}
+};
 ```
 
 ## Git Commands Summary
@@ -131,12 +131,14 @@ No additional setup needed - just push!
 ## Custom Domain (Optional)
 
 ### For Vercel:
+
 1. Go to Vercel project dashboard
 2. Settings → Domains
 3. Add your custom domain
 4. Update DNS settings at your domain provider
 
 ### For GitHub Pages:
+
 1. Add `CNAME` file to repository with your domain
 2. Update DNS settings at domain provider
 
@@ -148,6 +150,7 @@ For production environment variables:
 **Netlify**: Site Settings → Build & Deploy → Environment
 
 Add variables with `VITE_` prefix:
+
 ```
 VITE_API_URL=https://api.example.com
 ```
@@ -155,16 +158,19 @@ VITE_API_URL=https://api.example.com
 ## Troubleshooting
 
 **"fatal: remote origin already exists"**
+
 ```bash
 git remote remove origin
 git remote add origin https://github.com/YOUR-USERNAME/indestrial-tra.git
 ```
 
 **"Permission denied (publickey)"**
+
 - Set up SSH key: https://docs.github.com/en/authentication/connecting-to-github-with-ssh
 - Or use HTTPS instead of SSH
 
 **Build fails on Vercel/Netlify**
+
 - Check the build logs
 - Ensure `npm run build` works locally
 - Verify all dependencies are in package.json
