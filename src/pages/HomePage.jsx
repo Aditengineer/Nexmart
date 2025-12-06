@@ -11,7 +11,6 @@ export const HomePage = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { addToast } = useToast();
-  const [products, setProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +18,6 @@ export const HomePage = () => {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts();
-        setProducts(data);
         setFeaturedProducts(data.slice(0, 8));
       } catch (error) {
         console.error("Failed to load products:", error);

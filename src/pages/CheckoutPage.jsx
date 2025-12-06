@@ -30,16 +30,16 @@ export const CheckoutPage = () => {
   const tax = Math.round(subtotal * 0.1 * 100) / 100;
   const total = subtotal + tax;
 
-  const handleShippingSubmit = async (data) => {
+  const handleShippingSubmit = async (shippingData) => {
     setLoading(true);
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 800));
-    setShippingData(data);
+    setShippingData(shippingData);
     setCurrentStep(2);
     setLoading(false);
   };
 
-  const handlePaymentSubmit = async (data) => {
+  const handlePaymentSubmit = async () => {
     setLoading(true);
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));

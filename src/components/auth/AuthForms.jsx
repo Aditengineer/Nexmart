@@ -7,7 +7,7 @@ import "./AuthForms.css";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const { login, loginWithGoogle, loading, error: authError } = useAuth();
+  const { login, loginWithGoogle, loading } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -92,7 +92,7 @@ export const LoginForm = () => {
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
-  const { register, loginWithGoogle, loading, error: authError } = useAuth();
+  const { register, loginWithGoogle, loading } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

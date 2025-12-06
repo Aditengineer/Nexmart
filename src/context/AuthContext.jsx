@@ -1,23 +1,26 @@
-import React, { createContext, useState, useCallback, useEffect } from "react";
+import React, { createContext, useState, useCallback } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 
+// Initialize user from localStorage
+const initializeUser = () => {
+  const savedUser = localStorage.getItem("user");
+  if (savedUser) {
+    try {
+      return JSON.parse(savedUser);
+    } catch (error) {
+      console.error("Failed to load user:", error);
+      return null;
+    }
+  }
+  return null;
+};
+
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(initializeUser);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // Load user from localStorage
-  useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch (error) {
-        console.error("Failed to load user:", error);
-      }
-    }
-  }, []);
 
   const login = useCallback(async (email, password) => {
     setLoading(true);

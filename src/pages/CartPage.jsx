@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/common/Button";
 import { CartItem, CartSummary } from "../components/cart/CartComponents";
 import { useCart } from "../hooks/useCart";
-import { useToast } from "../hooks/useCart";
 import "./CartPage.css";
 
 export const CartPage = () => {
   const navigate = useNavigate();
   const { cart, updateQuantity, removeFromCart, getCartTotal } = useCart();
-  const { toasts, addToast } = useToast();
 
   const subtotal = getCartTotal();
   const tax = Math.round(subtotal * 0.1 * 100) / 100;

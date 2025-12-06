@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { fetchProducts, searchProducts } from "../utils/mockData";
 import { ProductGrid } from "../components/product/ProductGrid";
 import { Filters } from "../components/product/Filters";
@@ -10,7 +10,6 @@ import "./SearchPage.css";
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const { addToCart } = useCart();
   const { addToast } = useToast();
 

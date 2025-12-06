@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Rating } from "../common/Rating";
 import { Badge } from "../common/Badge";
-import { useCart } from "../../hooks/useCart";
 import "./ProductCard.css";
 
 export const ProductCard = ({ product, onAddToCart }) => {

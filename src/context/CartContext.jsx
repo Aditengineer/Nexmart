@@ -1,22 +1,25 @@
 import React, { createContext, useState, useCallback, useEffect } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  // Load cart from localStorage
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      try {
-        setCart(JSON.parse(savedCart));
-      } catch (error) {
-        console.error("Failed to load cart:", error);
-      }
+// Initialize cart from localStorage
+const initializeCart = () => {
+  const savedCart = localStorage.getItem("cart");
+  if (savedCart) {
+    try {
+      return JSON.parse(savedCart);
+    } catch (error) {
+      console.error("Failed to load cart:", error);
+      return [];
     }
-  }, []);
+  }
+  return [];
+};
+
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState(initializeCart);
+  const [loading, setLoading] = useState(false);
 
   // Save cart to localStorage
   useEffect(() => {

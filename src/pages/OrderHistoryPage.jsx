@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/common/Button";
 import { useAuth } from "../hooks/useCart";
 import "./OrderHistoryPage.css";
 
-export const OrderHistoryPage = () => {
-  const { user, isAuthenticated } = useAuth();
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    // Load orders from localStorage
-    const lastOrder = localStorage.getItem("lastOrder");
-    if (lastOrder) {
-      try {
-        const order = JSON.parse(lastOrder);
-        setOrders([order]);
-      } catch (error) {
-        console.error("Failed to load orders:", error);
-      }
+// Initialize orders from localStorage
+const initializeOrders = () => {
+  const lastOrder = localStorage.getItem("lastOrder");
+  if (lastOrder) {
+    try {
+      const order = JSON.parse(lastOrder);
+      return [order];
+    } catch (error) {
+      console.error("Failed to load orders:", error);
+      return [];
     }
-  }, []);
+  }
+  return [];
+};
+
+export const OrderHistoryPage = () => {
+  const { isAuthenticated } = useAuth();
+  const [orders] = useState(initializeOrders);
 
   if (!isAuthenticated) {
     return (
